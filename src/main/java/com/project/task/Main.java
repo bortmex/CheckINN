@@ -15,10 +15,21 @@ import java.util.Map;
 
 class Main {
 
-    static String getStatus(String text, String kpp, String data) throws IOException {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Введите ИНН:");
+        String inn = br.readLine();
+        System.out.println("Введите КПП:");
+        String kpp = br.readLine();
+        System.out.println("Введите Дату:");
+        String date = br.readLine();
+        System.out.println(getStatus(inn, kpp, date));
+    }
+
+    static String getStatus(String inn, String kpp, String data) throws IOException {
         URL url = new URL("http://npchk.nalog.ru/ajax.html");
         Map<String,Object> params = new LinkedHashMap<>();
-        params.put("inn", text);
+        params.put("inn", inn);
         params.put("kpp", kpp);
         params.put("dt", data);
         StringBuilder postData = new StringBuilder();
